@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self'; connect-src 'self' wss://broker.emqx.io:8084 wss://broker.hivemq.com:8884; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; connect-src 'self' wss://broker.emqx.io:8084 wss://broker.hivemq.com:8884; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   Permissions-Policy: camera=(self), microphone=(self), display-capture=(self), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
