@@ -1,49 +1,75 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "scope": "telephone-rouge-audio-runtime",
-  "product": "Telephone Rouge",
+  "product": "VisioNova",
   "runtime": {
     "package": "@shiguredo/rnnoise-wasm",
-    "version": "2022.2.0",
+    "version": "2025.1.5",
     "relationship": "direct",
     "registry": "npm",
-    "resolved": "https://registry.npmjs.org/@shiguredo/rnnoise-wasm/-/rnnoise-wasm-2022.2.0.tgz",
-    "integrity": "sha512-WqkBxuqc0WhG1eQW+tKw9asclkysEb9hrbyUieBNiYQnNM9EzNXbNN5o++SwKWou/rsH4LW6LZMe+TpQQtDntg==",
+    "resolved": "https://registry.npmjs.org/@shiguredo/rnnoise-wasm/-/rnnoise-wasm-2025.1.5.tgz",
+    "integrity": "sha512-9YJxzzHftlW936E5z9aEKK2CrPfUgc3HgZ2keyQ5e2Pb5bx+6tykYQ2Gyudvxd7Sxmlnar7SemDMFfx0OuVuGA==",
     "license": "Apache-2.0",
     "runtimeDependencies": [],
     "source": "https://github.com/shiguredo/rnnoise-wasm",
-    "sourceRevision": "not-disclosed-in-the-npm-payload"
+    "sourceRevision": "318dfdecdc2ddf3b33fe01a89ed8273ba0374ddc",
+    "distributionJavaScriptSha256": "e6958293a0118bf9860cb2753332f7562531cc987c914552c426cd7d7180a63e",
+    "scope": "reference-engine-and-tests-only"
   },
   "embeddedEngine": {
     "name": "RNNoise",
     "license": "BSD-3-Clause",
-    "sourceUsedByPublisher": "https://github.com/shiguredo/rnnoise",
-    "upstream": "https://github.com/xiph/rnnoise"
+    "sourceUsedByPublisher": "https://github.com/xiph/rnnoise",
+    "upstream": "https://github.com/xiph/rnnoise",
+    "version": "0.2",
+    "sourceRevision": "70f1d256acd4b34a572f999a05c87bf00b67730d",
+    "modelVersion": "0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37"
   },
   "artifacts": [
     {
       "variant": "normal",
-      "packagePath": "node_modules/@shiguredo/rnnoise-wasm/dist/rnnoise.wasm",
-      "bytes": 152656,
-      "sha256": "8b60a2ab88fdae2d1a9f940249d0eb072f28ba8e796f7304347b4e07839c8853"
+      "packagePath": "guest-shared/rnnoise-runtime.wasm",
+      "bytes": 3600944,
+      "sha256": "b3b67c9eae8f0791aad468c708659e0850bb37b0fb9c8a8666f2d7b0b6869bc4",
+      "bundled": false
     },
     {
-      "variant": "simd",
-      "packagePath": "node_modules/@shiguredo/rnnoise-wasm/dist/rnnoise_simd.wasm",
-      "bytes": 157234,
-      "sha256": "378fd17c294db15ee4e818ba5ef072242a21c8ad7445b483f7f46d7dc4f2c253"
+      "variant": "deepfilternet3",
+      "packagePath": "vendor/audio/deepfilternet3-0.5.6.wasm",
+      "bytes": 21736743,
+      "sha256": "d68bb63119352f0c151eb9f5dd538115077d5dc4d5c8588ad0ac6c61ce606e99",
+      "bundled": true
     }
   ],
   "notices": {
     "path": "THIRD-PARTY-NOTICES.txt",
-    "canonicalUtf8Sha256": "81c472ca0469b720d6a8df2ade24c754654dfe27e8bf7957d3470e755537a349"
+    "canonicalUtf8Sha256": "0aa64cad955c268997ee69419702c33e1c94886344d243e748457740c38358a2"
   },
   "verification": {
     "method": "npm lockfile integrity plus exact SHA-256 and byte length checks before packaging",
     "limits": [
-      "These hashes prove that the packaged inputs match the audited npm 2022.2.0 artifacts; they do not prove that the npm tarball is reproducible from source.",
-      "The 2022.2.0 npm payload does not identify the exact RNNoise submodule commit or the complete native build toolchain, so independent bit-for-bit source reproduction is not claimed.",
-      "A production build is accepted only when its emitted normal and SIMD WebAssembly files retain these exact SHA-256 values."
+      "The primary local candidate is the exact pinned DeepFilterNet3 WASM built from official libDF v0.5.6, unmodified inference source, and a private thin C ABI wrapper.",
+      "Distribution follows the repository MIT grant, retaining all notices. Separate clarification of pretrained model redistribution has not been received; this is a documented interpretation, not an additional author permission.",
+      "RNNoise 2025 remains an audited reference for tests and reproducible comparisons; its extracted WASM must not be emitted in the application or guest bundle.",
+      "These hashes bind the recorded build and inputs, without claiming an independent reproducible build or general acoustic superiority."
     ]
+  },
+  "primaryEngine": {
+    "id": "deepfilternet3",
+    "name": "DeepFilterNet3",
+    "engineVersion": "0.5.6",
+    "sourceRevision": "978576aa8400552a4ce9730838c635aa30db5e61",
+    "source": "https://github.com/Rikorose/DeepFilterNet/tree/v0.5.6",
+    "sourceArchiveSha256": "0f9a219d06c404bc4200f228e7e224f108cbbca04d7227a6de7d2ce974c2f579",
+    "modelSha256": "c94d91f70911001c946e0fabb4aa9adc37045f45a03b56008cb0c8244cb63616",
+    "wrapperSha256": "35292cc1c37c626d90bb76f5a877bd3921b1a9eccab1b35ab4af5de0d34087bf",
+    "cargoLockSha256": "23bd98e881583df8fd4e669187d6e008e1e1acf8a5f937ec33874a650c16f0ca",
+    "codeLicense": "MIT OR Apache-2.0",
+    "modelRedistribution": "not-separately-confirmed",
+    "redistribution": "repository-license-interpretation",
+    "clarification": "https://github.com/Rikorose/DeepFilterNet/issues/712",
+    "wasmSha256": "d68bb63119352f0c151eb9f5dd538115077d5dc4d5c8588ad0ac6c61ce606e99",
+    "selectedLicense": "MIT",
+    "modelLicenseClarification": "pending"
   }
 }
